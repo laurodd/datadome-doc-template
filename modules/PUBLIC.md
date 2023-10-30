@@ -3,16 +3,18 @@
 
 <!--- Generic description -->
 
-Before the regular MY_NEW_MODULE_NAME process starts, the module makes a call to the DataDome API using a KeepAlive connection.
+This Datadome module is to be used on TECHNO_NAME with SERVICE_NAME_AND_LINK / This module is developed in LANGUAGE and integrates smoothly with TECHNO_NAME.
+
+Before the regular MY_NEW_MODULE_NAME process starts, the module makes a call to the the closest DataDome Regional Endpoint /using a KeepAlive connection.
 
 Depending on the API response, the module will either block the query or let MY_NEW_MODULE_NAME proceed with the regular process.
 
-The module has been developed to protect the users' experience: if any errors were to occur during the process, or if the timeout is reached, the module will automatically disable its blocking process and allow those hits.
+The module has been developed to protect the users' experience: if any errors were to occur during the process, or if the timeout is reached, the module will automatically disable its blocking process and allow those requests.
 
 
 # Compatibility
 
-The DataDome module supports the following versions
+The DataDome module supports the following versions / runtimes
 
 - Apache 2.4 / .NET 6.0 / ...
 - Apache 2.2 / .NET 5.0 / ...
@@ -27,64 +29,38 @@ Every new release of the module is thoroughly tested on the following distributi
 
 # Installation
 
-1. Step 1
+1. Step 1.
 
 ```shell
 sudo blablabla
 ```
 
-2. Step 2
+2. Step 2.
 
 tblablablbala
 
+Y. Replace `DATADOME_LICENSE_KEY` with your own License Key, available in your [DataDome dashboard](https://app.datadome.co/). / Enter your own License Key, available in your [DataDome dashboard](https://app.datadome.co/).
+
+Z. blabla
+
+Congrats! You can now see your traffic in your [DataDome dashboard](https://app.datadome.co/dashboard/).
+
+
 # Configuration
 
-1. **Add the DataDome configuration below to the http block.**  
-   By default, the configuration is located on `/usr/local/openresty/nginx/conf/nginx.conf`
+By default, the configuration is located in _/usr/local/openresty/nginx/conf/nginx.conf_.
 
-- Make sure to replace the `datadome_server_side_key`
+Refer to the next Settings section for the full list of possible configuration settings.
 
+## Settings
 
-# Settings
-
-[block:parameters]
-{
-  "data": {
-    "h-0": "Setting",
-    "h-1": "Description",
-    "h-2": "Required",
-    "h-3": "Default Value",
-    "0-0": "datadome_server_side_key",
-    "0-1": "Your DataDome server side key, found in your [dashboard](https://app.datadome.co/dashboard/management/integrations)",
-    "0-2": "yes",
-    "0-3": "-",
-    "1-0": "datadome_endpoint",
-    "1-1": "Host of the API Server  \n[Available endpoints](doc:api-server)",
-    "1-2": "no",
-    "1-3": "`api.datadome.co`",
-    "2-0": "datadome_timeout",
-    "2-1": "Timeout for regular API calls",
-    "2-2": "no",
-    "2-3": "`150` (in milliseconds)",
-    "3-0": "datadome_url_pattern_inclusion",
-    "3-1": "Regular expression to include URLs",
-    "3-2": "no",
-    "3-3": "-",
-    "4-0": "datadome_url_pattern_exclusion",
-    "4-1": "Regular expression to exclude URLs",
-    "4-2": "no",
-    "4-3": "List of excluded static assets below"
-  },
-  "cols": 4,
-  "rows": 5,
-  "align": [
-    "left",
-    "left",
-    "left",
-    "left"
-  ]
-}
-[/block]
+| Setting      | Description | Required | Default Value |
+| :---        |    :----:   |    :----:     |      ---: |
+| datadome_server_side_key      | Your DataDome server side key, found in your [dashboard](https://app.datadome.co/dashboard/management/integrations)  | Yes   | - |
+| datadome_url_pattern_exclusion   | Regular expression to exclude URLs from the DataDome protection        | No    | List of excluded static assets below |
+| datadome_url_pattern_inclusion   | Regular expression to include URLs in the DataDome protected traffic       | No    | - |
+| datadome_timeout   | Timeout for regular API calls	| No    | 150ms /100 for edge modules |
+| datadome_endpoint   | Host of the API Server: available [endpoints](https://docs.datadome.co/docs/api-server)| No  | api.datadome.co |
 
 
 ```shell Excluded file extensions for static assets (default values)
@@ -93,5 +69,6 @@ tblablablbala
 
 
 
-# FAQ (debug, enrichied headers, proxy, timeouts...)
-## Subitem
+# FAQ (debug, enriched headers, proxy, timeouts...)
+
+## How do I...?
